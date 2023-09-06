@@ -43,14 +43,43 @@ Page {
                         Layout.column: 0
                         Layout.rowSpan: 2
                         Layout.fillHeight: true
-                        Layout.preferredHeight: delegate.height - 4
+                        Layout.preferredWidth: delegate.height - 4
                     }
-                    //Text{
-                    //
-                    //}
-                    //Button{
-                    //
-                    //}
+                    Text{
+                        text : name
+                        Layout.row: 0
+                        Layout.column: 1
+                        Layout.fillWidth: true
+                        font {
+                            bold : true
+                            pixelSize: Screen.pixelDensity * 4
+                        }
+                    }
+                    RoundButton{
+                        Layout.row: 0
+                        Layout.column: 2
+                        Layout.rowSpan: 2
+                        Layout.fillHeight: true
+                        Layout.preferredWidth: delegate.height - 4
+
+                        Timer {
+                            id : tmrMockup
+                            interval: 500;
+                            running: false;
+                            repeat: false
+                            onTriggered: stop()
+                        }
+
+                        onClicked: {
+                            tmrMockup.start()
+                        }
+
+                        BusyIndicator {
+                            anchors.fill: parent
+                            anchors.margins: 2
+                            running: tmrMockup.running
+                        }
+                    }
                 }
             }
         }

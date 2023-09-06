@@ -1,7 +1,8 @@
-import QtQuick
-import QtQuick.Window
-import QtQuick.Controls
-import QtQuick.Layouts
+import QtQuick 2.12
+import QtQuick.Window 2.12
+import QtQuick.Controls 2.12
+import QtQuick.Layouts 2.12
+import QtQuick.Controls.Universal 2.12
 
 ApplicationWindow {
     width: 480
@@ -38,7 +39,7 @@ ApplicationWindow {
                 }
             }
         }
-        height: Screen.pixelDensity * 10
+        height: Screen.pixelDensity * 15
     }
 
     StackView {

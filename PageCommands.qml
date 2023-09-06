@@ -1,6 +1,7 @@
-import QtQuick
-import QtQuick.Controls
-import QtQuick.Layouts
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import QtQuick.Layouts 2.12
+import QtQuick.Controls.Universal 2.12
 
 Page {
     id : pageCommands
@@ -51,7 +52,7 @@ Page {
                 border.color : "darkBlue"
                 border.width : 1
                 height : Screen.pixelDensity * 15
-                width : pageCommands.width
+                width : pageCommands.width - 4
                 gradient : Gradient {
                     GradientStop { position: 0.0; color: "lightcyan" }
                     GradientStop { position: 0.5; color: "azure" }
@@ -83,8 +84,9 @@ Page {
                         Layout.row: 0
                         Layout.column: 2
                         Layout.rowSpan: 2
-                        Layout.fillHeight: true
-                        Layout.preferredWidth: delegate.height - 4
+                        Layout.preferredHeight: delegate.height - 8
+                        Layout.preferredWidth: delegate.height - 8
+                        Layout.margins: 2
 
                         Timer {
                             id : tmrMockup

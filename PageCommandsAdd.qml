@@ -1,6 +1,7 @@
-import QtQuick
-import QtQuick.Controls
-import QtQuick.Layouts
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import QtQuick.Layouts 2.12
+import QtQuick.Controls.Universal 2.12
 
 Page {
     id : pageCommandsAdd
@@ -51,7 +52,7 @@ Page {
             Layout.row: 2
             Layout.column: 1
             Layout.fillWidth: true
-            placeholderText: "Обязательное поле"
+            placeholderText: qsTr("Обязательное поле")
             font.pixelSize: Screen.pixelDensity * 4
         }
 

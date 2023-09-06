@@ -20,6 +20,8 @@ qt_add_qml_module(app2023_09_interview_spb
     QML_FILES PageCommandsAdd.qml
     RESOURCES image1.svg
     RESOURCES image2.svg
+    QML_FILES Style.qml
+    SOURCES modelsaverloader.h modelsaverloader.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

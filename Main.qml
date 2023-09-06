@@ -8,6 +8,8 @@ Window {
     visible: true
     title: qsTr("Hello World")
 
+    signal signalUpdateModel();
+
     StackView {
         id : stackView
         anchors.fill: parent
@@ -22,8 +24,8 @@ Window {
     }
 
     ListModel {
-        id : commandsModel
-        // для отладки
+        id : modelCommands
+        /* для отладки
         ListElement {
             name : "Команда 1"
             image : "image1.svg"
@@ -31,7 +33,7 @@ Window {
         ListElement {
             name : "Команда 2"
             image : "image2.svg"
-        }
+        }*/
     }
 
 }

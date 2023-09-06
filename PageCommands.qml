@@ -6,19 +6,22 @@ Page {
     id : pageCommands
     ColumnLayout {
         anchors.fill: parent
+        anchors.margins: 2
         Button {
             text: "Add"
             Layout.preferredHeight: Screen.pixelDensity * 15
             Layout.preferredWidth: Screen.pixelDensity * 30
             Layout.alignment: Qt.AlignHCenter
+            font.pixelSize: Screen.pixelDensity * 4
             onClicked: {
+                pageCommandsAdd.clear();
                 stackView.push(pageCommandsAdd)
             }
         }
         ListView {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            model : commandsModel
+            model : modelCommands
             spacing : 1
             clip: true
             delegate: Rectangle {

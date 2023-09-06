@@ -4,6 +4,26 @@ import QtQuick.Layouts
 
 Page {
     id : pageCommands
+    property int error_counter: 0
+
+    Popup {
+        id : popupError
+        anchors.centerIn: parent
+        width: pageCommands.width *2/3
+        height: pageCommands.height *2/3
+        modal: true
+        focus: true
+/*        closePolicy: Popup.CloseOnEscape
+                    | Popup.CloseOnPressOutsideParent
+                    | Popup.CloseOnPressOutside */
+
+        Text{
+            anchors.centerIn: parent
+            text: qsTr("Ошибка!")
+            color: "red"
+            font.pixelSize: Screen.pixelDensity * 4
+        }
+    }
 
     ColumnLayout {
         anchors.fill: parent
@@ -71,11 +91,19 @@ Page {
                             interval: 500;
                             running: false;
                             repeat: false
-                            onTriggered: stop()
+                            onTriggered: {
+                                stop();
+                                console.log(pageCommands.error_counter)
+                                if(pageCommands.error_counter==2){
+                                    pageCommands.error_counter = 0;
+                                    popupError.open();
+                                }
+                            }
                         }
 
                         onClicked: {
-                            tmrMockup.start()
+                            tmrMockup.start();
+                            pageCommands.error_counter++;
                         }
 
                         BusyIndicator {

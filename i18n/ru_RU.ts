@@ -4,7 +4,8 @@
 <context>
     <name>Main</name>
     <message>
-        <location filename="../Main.qml" line="9"/>
+        <location filename="../Main.qml" line="+10"/>
+        <location/>
         <source>Задание на собеседование</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12,7 +13,13 @@
 <context>
     <name>PageCommands</name>
     <message>
-        <location filename="../PageCommands.qml" line="38"/>
+        <location filename="../PageCommands.qml" line="+18"/>
+        <source>Ошибка!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <location/>
         <source>Добавить</source>
         <translation type="unfinished"></translation>
     </message>
@@ -20,22 +27,26 @@
 <context>
     <name>PageCommandsAdd</name>
     <message>
-        <location filename="../PageCommandsAdd.qml" line="28"/>
+        <location filename="../PageCommandsAdd.qml" line="+30"/>
+        <location/>
         <source>Картинка</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PageCommandsAdd.qml" line="42"/>
+        <location line="+14"/>
+        <location/>
         <source>Название</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PageCommandsAdd.qml" line="70"/>
+        <location line="+30"/>
+        <location/>
         <source>Сохранить</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PageCommandsAdd.qml" line="89"/>
+        <location line="+20"/>
+        <location/>
         <source>Отмена</source>
         <translation type="unfinished"></translation>
     </message>

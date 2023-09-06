@@ -25,7 +25,7 @@ Page {
         }
 
         Label{
-            text : "Картинка"
+            text : qsTr("Картинка")
             Layout.row: 1
             Layout.column: 0
             font.pixelSize: Screen.pixelDensity * 4
@@ -39,7 +39,7 @@ Page {
         }
 
         Label{
-            text : "Название"
+            text : qsTr("Название")
             Layout.row: 2
             Layout.column: 0
             font.pixelSize: Screen.pixelDensity * 4
@@ -67,23 +67,26 @@ Page {
         width: parent.width
         height: Screen.pixelDensity * 15
         Button {
-            text : "Сохранить"
+            text : qsTr("Сохранить")
             enabled: edtCommandName.text !== ""
             Layout.row: 4
             Layout.column: 0
             Layout.fillWidth: true
             Layout.preferredHeight: Screen.pixelDensity * 15
             onClicked: {
+                /* для использования с С++ QAbstractListModel */
+                signalAppend(edtCommandName.text, edtCommandImage.text);
+                /* для использования с QML ListModel
                 modelCommands.append(
                     {"name": edtCommandName.text,
-                     "image":edtCommandImage.text})
+                     "image":edtCommandImage.text}) */
                 signalUpdateModel();
                 stackView.pop()
             }
         }
 
         Button {
-            text : "Отмена"
+            text : qsTr("Отмена")
             Layout.row: 4
             Layout.column: 1
             Layout.fillWidth: true

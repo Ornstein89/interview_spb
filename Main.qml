@@ -6,9 +6,11 @@ Window {
     width: 480
     height: 640
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("Задание на собеседование")
 
     signal signalUpdateModel();
+    signal signalAppend(string name, string image);
+    signal signalTranslate(string lang);
 
     StackView {
         id : stackView
@@ -23,9 +25,10 @@ Window {
         }
     }
 
+    /*для отладки
     ListModel {
         id : modelCommands
-        /* для отладки
+
         ListElement {
             name : "Команда 1"
             image : "image1.svg"
@@ -33,7 +36,7 @@ Window {
         ListElement {
             name : "Команда 2"
             image : "image2.svg"
-        }*/
-    }
+        }
+    }*/
 
 }

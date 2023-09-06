@@ -4,11 +4,39 @@ import QtQuick.Layouts
 
 Page {
     id : pageCommands
+    header: Rectangle {
+        color: "blue"
+        RowLayout{
+            anchors.fill: parent
+            anchors.margins: 2
+            Item {
+                id: name
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+            }
+            ComboBox {
+                textRole: "text"
+                valueRole: "value"
+                model: ListModel{
+                    ListElement{text:"RU"; value:"ru_RU"}
+                    ListElement{text:"EN"; value:"en_US"}
+                }
+
+                Layout.fillHeight: true
+                font.pixelSize: Screen.pixelDensity * 4
+                onCurrentIndexChanged: {
+                    signalTranslate(currentValue)
+                }
+            }
+        }
+        height: Screen.pixelDensity * 10
+    }
+
     ColumnLayout {
         anchors.fill: parent
         anchors.margins: 2
         Button {
-            text: "Add"
+            text: qsTr("Добавить")
             Layout.preferredHeight: Screen.pixelDensity * 15
             Layout.preferredWidth: Screen.pixelDensity * 30
             Layout.alignment: Qt.AlignHCenter

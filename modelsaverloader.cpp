@@ -32,6 +32,7 @@ void ModelCommands::addCommand(const Command &command)
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
     m_commands << command;
     endInsertRows();
+    this->saveToJson();
 }
 
 int ModelCommands::rowCount(const QModelIndex &parent) const
@@ -52,9 +53,24 @@ QVariant ModelCommands::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-void ModelCommands::saveToJson()
+void ModelCommands::saveToJson(const QString & fileName)
 {
-
+    QJsonArray commands;
+    for(const Command & item : m_commands){
+        QJsonObject jsonItem;
+        jsonItem["name"] = item.name();
+        jsonItem["image"] = item.image();
+        commands.append(jsonItem);
+    }
+    QJsonObject rootObject;
+    rootObject["commands"] = commands;
+    QJsonDocument jsonDoc;
+    jsonDoc.setObject(rootObject);
+    QFile jsonFile(fileName);
+    if(!jsonFile.open(QFile::WriteOnly))
+        return;
+    jsonFile.write(jsonDoc.toJson());
+    jsonFile.close();
 }
 
 void ModelCommands::loadFromJson(const QString & fileName)
@@ -66,7 +82,16 @@ void ModelCommands::loadFromJson(const QString & fileName)
     jsonFile.close();
     QJsonObject rootObject = jsonDoc.object();
     QJsonArray commands = rootObject["commands"].toArray();
+    for(auto item : commands){
+        m_commands.append(Command(
+            item.toObject()["name"].toString(),
+            item.toObject()["image"].toString()));
+    }
+}
 
+void ModelCommands::append(const QString &name, const QString &image)
+{
+    addCommand(Command(name, image));
 }
 
 QHash<int, QByteArray> ModelCommands::roleNames() const

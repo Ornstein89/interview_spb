@@ -35,8 +35,9 @@ public:
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
 
 public slots:
-    void saveToJson();
-    void loadFromJson(const QString &fileName);
+    void saveToJson(const QString & fileName = "file.json");
+    void loadFromJson(const QString &fileName = "file.json");
+    void append(const QString &name, const QString &image);
 
 protected:
     QHash<int, QByteArray> roleNames() const;

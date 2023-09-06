@@ -1,8 +1,9 @@
 import QtQuick
 import QtQuick.Window
 import QtQuick.Controls
+import QtQuick.Layouts
 
-Window {
+ApplicationWindow {
     width: 480
     height: 640
     visible: true
@@ -11,6 +12,34 @@ Window {
     signal signalUpdateModel();
     signal signalAppend(string name, string image);
     signal signalTranslate(string lang);
+
+    header: Rectangle {
+        color: "blue"
+        RowLayout{
+            anchors.fill: parent
+            anchors.margins: 2
+            Item {
+                id: name
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+            }
+            ComboBox {
+                textRole: "text"
+                valueRole: "value"
+                model: ListModel{
+                    ListElement{text:"RU"; value:"ru_RU"}
+                    ListElement{text:"EN"; value:"en_US"}
+                }
+
+                Layout.fillHeight: true
+                font.pixelSize: Screen.pixelDensity * 4
+                onActivated: {
+                    signalTranslate(currentValue)
+                }
+            }
+        }
+        height: Screen.pixelDensity * 10
+    }
 
     StackView {
         id : stackView

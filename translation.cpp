@@ -9,7 +9,6 @@ Translation::Translation(QObject *parent)
 
 void Translation::setTranslation(QString translation)
 {
-    qDebug() << "*** filename= " << translation;
     qDebug() << "***QTranslator.load() " << m_translator.load(translation);
     qApp->installTranslator(&m_translator);
     qDebug() << "***languageChanged";
